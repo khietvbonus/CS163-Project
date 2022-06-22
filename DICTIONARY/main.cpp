@@ -22,22 +22,50 @@ do  {
         case 1:  
             cout << "Input a word: ";
             cin >> inputWord;
-            cout << test1.searchKeyword(inputWord) << endl;
             test1.addToHistory(inputWord);
+            cout << test1.searchKeyword(inputWord) << endl;
+            if( test1.searchKeyword(inputWord) != "Not found")
+            {
+                cout << "You want to add this word to your favorite list? (1/0) ";
+                cin >> command;
+                if(command == "1")
+                {
+                    test1.addToFavoriteList(inputWord);
+                    cout << "Sucessfully add to your favorite list" << endl;
+                }
+            }
             break;
 
         case 2:
              cout << "Enter word to add to favorite list: " << endl;
              cin >> inputWord;
-             test1.addToFavoriteList(inputWord);
+             if( test1.searchKeyword(inputWord) != "Not found"){
+                test1.addToFavoriteList(inputWord);
+                }
+            else{
+                cout << "Sorry this word is not in Dictionary. Do you want to add this word to dictionary? (1/0) ";
+                cin >> command;
+                if(command == "1")
+                {
+                    cout << "Enter word meaning: ";
+                    cin >> inputMeaning;
+                    test1.addNewWord(inputWord, inputMeaning);
+                    cout << "Sucessfully add new word to dictionary" << endl;
+                }
+            }
              break;
 
         case 3:
+            cout << "This is your favorite list: " << endl;
+            test1.viewFavoriteList();
+            break;
+
+        case 4:
             cout << "History of search word: " << endl;
             test1.viewHistoryOfSearchWord();
             break;
 
-        case 4:
+        case 5:
             cout << "Enter a new word: ";
             cin >> inputWord;
             cout << "Enter word meaning: ";
@@ -45,16 +73,12 @@ do  {
             test1.addNewWord(inputWord,inputMeaning);
             break;
     
-        case 5:
+        case 6:
             cout << "Enter word to edit definition: ";
             cin >> inputWord;
             cout << "Enter new meaning: ";
             cin >> inputMeaning;
             test1.editDefinition(inputWord, inputMeaning);
-            break;
-
-        case 6:
-            cout << "Not ready" << endl;
             break;
 
         case 7:
@@ -65,16 +89,20 @@ do  {
             cout << "Not ready" << endl;
             break;
 
+        case 9:
+            cout << "Not ready" << endl;
+            break;
+
         default:
             cout << "Invalid input" << endl;
             break;
         }
         
     fflush(stdin);
-        cout << "\nWould you like to continue or exit? (Continue/Exit) ";
+        cout << "\nWould you like to continue or exit? (1/0) ";
         cin >> command;
     }
-    while(command == "continue" || command == "Continue" || command == "CONTINUE");
+    while(command == "1");
 
     cout << "Thanks for using our Dictionary.\n";
   

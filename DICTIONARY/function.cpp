@@ -3,15 +3,16 @@
 
 void menu()
 {
-    cout << "Please enter to select: " << endl;
+    cout << "-----WELCOME TO OUR DICTIONARY-----" << endl;
     cout << "1: Search for a word" << endl;
     cout << "2: Add word to favorite list" << endl;
-    cout << "3: View history of search word" << endl;
-    cout << "4: Add new word and definition" << endl;
-    cout << "5: Edit definition" << endl;
-    cout << "6: Remove a word" << endl;
-    cout << "7: Reset dictionary" << endl;
-    cout << "8: View randomw word and definition" << endl;
+    cout << "3: View favorite list" << endl;
+    cout << "4: View history of search word" << endl;
+    cout << "5: Add new word and definition" << endl;
+    cout << "6: Edit definition" << endl;
+    cout << "7: Remove a word" << endl;
+    cout << "8: Reset dictionary" << endl;
+    cout << "9: View randomw word and definition" << endl;
 }
 
 Trie* Trie::getNewTrie(string word, string meaning) 
@@ -93,44 +94,46 @@ void Dictionary::editDefinition(const string& st, string newMeaning)
 
 void Dictionary::addToFavoriteList(const string& st) 
 { 
-    fstream my_file;
-	my_file.open("FavoriteList.txt", ios::out);
-	if (!my_file) {
-		cout << "File not created!";
-	}
-	else {
-        if (root == NULL) 
-		cout << "Cannot add to favorite list";
-        return;
-
-	    Trie* temp = root; 
-
-	    for (int i = 0; i < st.length(); i++) { 
-		    temp = temp->map[st[i]]; 
-		    if (temp == NULL)
-                cout << "Cannot add to favorite list";
-                return;
-	    
-        }	
+    ofstream foutput; 
+    ifstream finput;
+    finput.open ("FavoriteList.txt");
+    foutput.open ("FavoriteList.txt",ios::app); 
  
-	    if (temp->isEndOfName) 
-		    my_file << st << " " << temp->definition; 
-	    return; 
-		my_file.close();
-	}
+    if(finput.is_open())
+        foutput<< st << "   " << searchKeyword(st) << "\n"; 
+  
+    finput.close();
+    foutput.close(); 
 } 
 
 void Dictionary::addToHistory(const string& st)
 {
-	fstream my_file;
-	my_file.open("HistoryList.txt", ios::out);
-	if (!my_file) {
-		cout << "File not created!";
-	}
-	else {
-        my_file << st << endl;
-		my_file.close();
-	}
+    ofstream foutput; 
+    ifstream finput;
+    finput.open ("HistoryList.txt");
+    foutput.open ("HistoryList.txt",ios::app); 
+ 
+    if(finput.is_open())
+        foutput<< st << "\n"; 
+  
+    finput.close();
+    foutput.close(); 	
+}
+
+void Dictionary::viewFavoriteList()
+{
+	string line;
+  	ifstream myfile ("FavoriteList.txt");
+  	if (myfile.is_open())
+  	{
+    	while ( getline (myfile,line) )
+    	{
+      		cout << line << '\n';
+    	}
+    	myfile.close();
+  	}
+
+  	else cout << "Unable to open file";
 }
 
 void Dictionary::viewHistoryOfSearchWord()

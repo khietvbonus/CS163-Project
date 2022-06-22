@@ -25,6 +25,7 @@ class Dictionary{
         void editDefinition(const string& st, string newMeaning);
         void addToFavoriteList(const string& st);
         void addToHistory(const string& st);
+        void viewFavoriteList();
         void viewHistoryOfSearchWord();
 };
 
