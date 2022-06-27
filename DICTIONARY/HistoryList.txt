@@ -20,3 +20,7 @@ CTS
 %-)
 :-O
 A
+2M
+Appay
+A
+Adopt

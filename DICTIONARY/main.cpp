@@ -16,7 +16,7 @@ int main()
 
     cout << "1: Dictionary Slang" << endl;
     cout << "2: Dictionary Emotional" << endl;
-    cout << "3: Dictionary for A" << endl;
+    //cout << "3: Dictionary for A" << endl;
     cout << "Choose Dictionary: " ;
     cin >> choose;
     cout << endl;
