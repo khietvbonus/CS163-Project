@@ -33,4 +33,5 @@ public:
     void addToHistory(const string& st);
     void viewFavoriteList();
     void viewHistoryOfSearchWord();
+    void chooseDic(int temp);
 };

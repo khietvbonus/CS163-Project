@@ -1,5 +1,112 @@
-#include "function.h"
+﻿#include "function.h"
 
+
+void Dictionary::chooseDic(int temp)
+{
+    switch (temp)
+    {
+    case 1:
+    {
+        ofstream foutput;
+        ifstream finput;
+        finput.open("slang.txt");
+
+        string buf;
+        string data;
+        std::getline(finput, buf);
+
+        while (!finput.eof())
+        {
+            std::getline(finput, buf);
+          
+            data += buf + "\n";
+
+            char* p;
+            char* ch = new char[buf.length()];
+            strcpy(ch, buf.c_str());
+            p = strtok(ch, "`");       
+            char* first = p;       
+            p = strtok(NULL, "`");
+            if (p != NULL) {
+                addNewWord(first, p);
+            }          
+        }
+        finput.close();
+
+        break;
+    }
+
+    case 2:
+    {     
+        ifstream finput1;
+        finput1.open("emotional.txt");
+        if (!finput1) {
+            cerr << "Error: file not opened." << endl;
+        }
+        string buf1;
+        string data;
+       // std::getline(finput1, buf1);
+
+      
+
+        while (std::getline(finput1, buf1))
+        {
+
+            char* p;
+            char* ch = new char[buf1.length()];
+            strcpy(ch, buf1.c_str());
+            p = strtok(ch, " ");
+            char* first = p;
+            p = strtok(NULL, "");
+            if (p != NULL) {
+                addNewWord(first, p);
+            }
+            
+        }
+        finput1.close();
+
+        break;
+    }
+
+    case 3:
+    {
+        ifstream finput1;
+        finput1.open("A.txt");
+        if (!finput1) {
+            cerr << "Error: file not opened." << endl;           
+        }
+        string buf1;
+        string data;
+        //std::getline(finput1, buf1);
+        //cout << buf1;
+        
+        while (std::getline(finput1, buf1))
+        {
+            
+            char* p;
+            char* ch = new char[buf1.length()];
+            strcpy(ch, buf1.c_str());
+            p = strtok(ch, ":");
+            char* first = p;
+            p = strtok(NULL, "");
+            if (p != NULL) {
+                addNewWord(first, p);
+            }
+        }
+        finput1.close();
+       
+        break;
+    }
+
+        default:
+        {
+            cout << "Invalid input" << endl;
+            break;
+        }
+    }
+
+
+}
 
 
 void menu()
@@ -152,3 +259,19 @@ void Dictionary::viewHistoryOfSearchWord()
 
     else cout << "Unable to open file";
 }
+
+//void Dictionary::viewFavoriteList()
+//{
+//    string line;
+//    ifstream myfile("FavoriteList.txt");
+//    if (myfile.is_open())
+//    {
+//        while (getline(myfile, line))
+//        {
+//            cout << line << '\n';
+//        }
+//        myfile.close();
+//    }
+//
+//    else cout << "Unable to open file";
+//}

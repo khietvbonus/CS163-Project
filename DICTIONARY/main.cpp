@@ -6,12 +6,24 @@ int main()
     string inputWord, inputMeaning, command;
     Dictionary test1;
 
-    test1.addNewWord("Alice", "80");
+  /*  test1.addNewWord("Alice", "80");
     test1.addNewWord("Pooja", "85");
     test1.addNewWord("Ramesh", "83");
-    test1.addNewWord("Mark", "88");
+    test1.addNewWord("Mark", "88");*/
+    int choose = 0;
 
+    cout << "-----WELCOME TO OUR DICTIONARY-----" << endl;
+
+    cout << "1: Dictionary Slang" << endl;
+    cout << "2: Dictionary Emotional" << endl;
+    cout << "3: Dictionary for A" << endl;
+    cout << "Choose Dictionary: " ;
+    cin >> choose;
+    cout << endl;
+    test1.chooseDic(choose);
     do {
+      
+
         menu();
         cout << endl;
         fflush(stdin);

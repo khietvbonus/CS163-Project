@@ -1,1 +1,6 @@
 Alice   80
+#1   Number one
+#1   Number one
+IDK   I Don't Know
+%-)   User has been staring at a green screen for 15 hours straight.
+:-O   oops
