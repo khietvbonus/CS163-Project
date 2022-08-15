@@ -10,10 +10,9 @@ int main()
     test1.addNewWord("Pooja", "85");
     test1.addNewWord("Ramesh", "83");
     test1.addNewWord("Mark", "88");*/
+
     int choose = 0;
-
     cout << "-----WELCOME TO OUR DICTIONARY-----" << endl;
-
     cout << "1: Dictionary Slang" << endl;
     cout << "2: Dictionary Emotional" << endl;
     //cout << "3: Dictionary for A" << endl;
